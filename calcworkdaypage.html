@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculate of work days per employees</title>
+</head>
+<body>
+<script type="text/javascript">
+    function getResultUserWorkDay(form) {
+        var name = (form.elements).employeeName.value;
+        switch (name){
+            case "Test1":
+                document.getElementById("resultPOST").value = Math.floor((Math.random() * 1000000) + 1);
+                break;
+            case "Test2":
+                document.getElementById("resultPOST").value = 5;
+                break;
+            case "Test3":
+                document.getElementById("resultPOST").value = NaN;
+                break;
+            default:
+                break;
+
+        }
+    }
+</script>
+<script type="text/javascript">
+function findUserWorkDays(form) {
+    var elems = form.elements;
+    if (!elems.employeeName.value){
+        alert("Set employee name!");
+    }else if (!elems.startDate.value){
+        alert("Set start date!");
+    }else if (!elems.endDate.value){
+        alert("Set end date!");
+    }else {
+      getResultUserWorkDay(form);
+    }
+    
+}
+</script>
+
+<form id="calculateWorkDays" method="post">
+    <fieldset>
+        <legend>Calculate of work days per employees</legend>
+        <p>Write an full employee name</p>
+        <p><input name="employeeName" ></p>
+        <p>Select start date:<input name="startDate" type="date"  value="" max="2055-05-29" min="1900-01-01"></p>
+        <P>Select end date:<input name="endDate" type="datetime-local"  value="" max="2055-05-29" min="1900-01-01"></p>
+        <p>
+            <button onclick="findUserWorkDays(this.form); return false;">Find a work days</button>
+        </p>
+        <p>
+            <textarea id = "resultPOST" disabled>Result:</textarea>
+        </p>
+    </fieldset>
+</form>
+
+</body>
+</html>
